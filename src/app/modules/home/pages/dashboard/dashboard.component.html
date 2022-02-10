@@ -1,0 +1,27 @@
+<h1>Dashboards</h1>
+<hr class="mb-4">
+<div class="row p-4 p-md-0">
+    <div class="col-12 col-md-6 text-center">
+        <ng-container *ngIf="ticketMedData | async as tmd; else loading;"> 
+            <ecom-line-chart chartType="line" titulo="Ticket Medio / Data" [dataset]="tmd"></ecom-line-chart>
+        </ng-container>
+    </div>
+    <div class="col-12 col-md-6">
+        <ng-container *ngIf="rankProdutos | async as rp; else loading;">
+            <ecom-line-chart titulo="Distribuição Produtos" chartType="pie" [dataset]="rp"></ecom-line-chart>
+        </ng-container>
+    </div>
+</div>
+<div class="row p-4 p-md-0">
+    <div class="col-12 col-md-6 text-center">
+        <ng-container *ngIf="ticketMedCidade | async as tmc; else loading;">
+            <ecom-line-chart chartType="bar" titulo="Ticket Medio / Cidade" [dataset]="tmc"></ecom-line-chart>
+        </ng-container>
+    </div>
+    <div class="col-12 col-md-6">
+        <!-- <ecom-line-chart chartType="polarArea" [dataset]="dataSet"></ecom-line-chart> -->
+    </div>
+</div>
+<ng-template #loading>
+    <mat-spinner class="my-4 mx-auto"></mat-spinner>
+</ng-template>

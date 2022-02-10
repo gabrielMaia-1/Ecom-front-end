@@ -1,0 +1,21 @@
+<ecom-main-nav></ecom-main-nav>
+<!-- <mat-tab-group mat-align-tabs="start" animationDuration="0ms">
+    <mat-tab label="DashBoard"></mat-tab>
+    <mat-tab label="Pedidos"></mat-tab>
+</mat-tab-group>
+ -->
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a mat-tab-link routerLink="/home/dashboard">
+        <mat-icon class="mx-2">leaderboard</mat-icon>
+        <span class="d-none d-sm-inline-block">Dashboard</span>
+    </a>
+    <a mat-tab-link routerLink="/home/pedidos">
+        <mat-icon class="mx-2">table_chart</mat-icon>
+        <span class="d-none d-sm-inline-block">Tabela Pedidos</span>
+    </a>
+</nav>
+<mat-tab-nav-panel #tabPanel>
+    <div class="container p-0 p-sm-3">
+        <router-outlet></router-outlet>
+    </div>
+</mat-tab-nav-panel>

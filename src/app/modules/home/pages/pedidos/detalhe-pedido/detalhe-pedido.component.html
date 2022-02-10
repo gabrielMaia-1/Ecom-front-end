@@ -1,0 +1,65 @@
+<div class="container p-2 p-sm-4 d-flex flex-row" class="element-detail" [@detailExpand]="expanded ? 'expanded' : 'collapsed'">
+    <ng-container *ngIf="element; else notFound;">
+        <div class="row">
+
+        
+        <div class="col col-sm-6">
+            <span>
+                <h2><b>Endereco </b>[Id: {{element.endereco.enderecoId}}]</h2>
+            </span>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <b>Endereco:</b>
+                </div>
+                <div class="col text-end">
+                    {{element.endereco.endereco}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <b>Cidade:</b>
+                </div>
+                <div class="col text-end">
+                    {{element.endereco.cidade}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <b>Estado:</b>
+                </div>
+                <div class="col text-end">
+                    {{element.endereco.estado}} ({{element.endereco.uf}})
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <b>Cep:</b>
+                </div>
+                <div class="col text-end">
+                    {{element.endereco.cep}}
+                </div>
+            </div>
+        </div>
+        <hr class="m1 d-sm-none">
+        <div class="col col-sm-6">
+            <h2><b>Produtos</b></h2>
+            <div class="row pb-2">
+                <ng-container *ngFor="let produto of element.produtos">
+                    <div class="col-8">
+                        {{'1x ' + produto.nome}}
+                    </div>
+                    <div class="col-4 text-end">
+                        {{produto.valor | currency: 'BRL'}}
+                    </div>
+                </ng-container>
+                <hr class="m-1">
+                <div class="col-8"><b>Total:</b></div>
+                <div class="col-4 text-end"><b>{{sum(element.produtos)  | currency: 'BRL'}}</b></div>
+            </div>
+        </div>
+    </div>
+    </ng-container>
+    <ng-template #notFound>
+        <h3>Detalhe não encontrado.... '-'</h3>
+    </ng-template>
+</div>

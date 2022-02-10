@@ -1,0 +1,1 @@
+export const API_ROUTE_AUTH = 'auth/login' 
