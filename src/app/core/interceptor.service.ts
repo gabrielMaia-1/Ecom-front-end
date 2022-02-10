@@ -26,6 +26,9 @@ export class InterceptorService implements HttpInterceptor {
   errorHandler(err: HttpErrorResponse, request: HttpRequest<any>, next: HttpHandler) {
     if(!environment.production) console.log(err);
 
+    if(err.status == 401) {
+      this._auth.logout();
+    }
     if(err.error.message != null)
     {
       this._dialog.open<MsgDialogComponent, MessageDialogData>(MsgDialogComponent, {
